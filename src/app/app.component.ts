@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { MessageService } from './message.service';
 
@@ -9,16 +9,34 @@ import { MessageService } from './message.service';
 })
 export class AppComponent {
   public title = 'Welcome to Botson!';
-  public message: string = null;
+  public showIntro = true;
+  public messages = [];
 
   constructor(
     private _messageService: MessageService
-  ) {}
+  ) { }
 
-  public sendMessage(): void {
-    this._messageService.sendMessage()
+  public sendMessage(message): void {
+    this._messageService.sendMessage(message)
       .then((res) => {
-        this.message = res.message;
+        this.messages.push({
+          'value': res.message,
+          'person': 'bot'
+        });
       });
+  }
+
+  public closeClick(event): void {
+    if (event.doClose === true) {
+      this.showIntro = false;
+    }
+
+    if (event.message !== null) {
+      this.sendMessage(event.message);
+      this.messages.push({
+        'value': event.message,
+        'person': 'user'
+      });
+    }
   }
 }

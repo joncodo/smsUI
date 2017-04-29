@@ -1,10 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { IntroComponent } from './intro/intro.component';
+import { WeatherComponent } from './weather/weather.component';
+
 const routes: Routes = [
   {
     path: '',
-    children: []
+    component: IntroComponent
+  },
+  {
+    path: 'weather',
+    component: WeatherComponent
+  },
+  {
+    path: '',
+    redirectTo: '/',
+    pathMatch: 'full'
   }
 ];
 

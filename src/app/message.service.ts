@@ -13,9 +13,9 @@ export class MessageService {
     private _http: Http
   ) { }
 
-  sendMessage(): Promise<any> {
+  sendMessage(message: string): Promise<any> {
     return this._http
-      .post(this._apiUrl, {})
+      .post(this._apiUrl, {message: message})
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);

@@ -1,7 +1,7 @@
-<h1>
-  {{title}}
-</h1>
-<button (click)="sendMessage()">Send a Message</button>
-<h4>Response</h4>
-<pre>{{message}}</pre>
-<router-outlet></router-outlet>
+<bot-intro *ngIf="showIntro === true" (closeClick)="closeClick($event)"></bot-intro>
+<div class="content" fxLayout="column" fxFlex="1 0 auto">
+  <p class="message" [ngClass]="message.person" *ngFor="let message of messages">
+    {{message.value}}
+  </p>
+</div>
+<textarea placeholder="How can I help you?" fxFlex="1 0 auto"></textarea>

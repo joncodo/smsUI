@@ -1,0 +1,32 @@
+<div class="content" #content>
+  <img class="logo" src="/assets/botson.png" />
+  <h3>Hi! My name is Botson and I am here to help you be as productive as possible.</h3>
+  <div fxLayout="row" fxLayoutGap="3%">
+    <div fxFlex="67%" fxLayout="column">
+      <p>Here is a small sample of things I can help with. Select from the list below or send me a chat.</p>
+      <a class="action" *ngFor="let action of actions; let i = index;" (click)="sendMessage(i)">{{action.message}}</a>
+    </div>
+    <div fxFlex="33%" fxLayout="column" class="sidebar">
+      <p>Want to know more about me?</p>
+      <br/>
+      <label>NAME</label>
+      <p>Botson</p>
+      <br/>
+      <label>FAVORITE PLACE</label>
+      <p>Botanical Gardens</p>
+      <br/>
+      <label>I WOULD LIKE TO VISIT</label>
+      <p>Botswana</p>
+      <br/>
+      <label>HAVE I EVER HAD BOTOX DONE?</label>
+      <p>No</p>
+      <br/>
+      <label>HAVE I EVER HAD BOTULISM?</label>
+      <p>No</p>
+      <br/>
+      <label>FAVORITE PET</label>
+      <p>Botfly</p>
+      <br/>
+    </div>
+  </div>
+</div>
