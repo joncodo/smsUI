@@ -3,9 +3,9 @@ import { Http, Response } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Reminder } from './reminder/reminder';
-import { ReminderService } from './reminder/reminder.service';
-import { environment } from '../environments/environment';
+import { Reminder } from '../reminder/reminder';
+import { ReminderService } from '../reminder/reminder.service';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class MessageService {

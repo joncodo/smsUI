@@ -3,7 +3,7 @@ import { Component, Input, OnDestroy } from '@angular/core';
 import * as moment from 'moment';
 import { Subscription } from 'rxjs/Subscription';
 
-import { MessageService } from './message.service';
+import { MessageService } from './message/message.service';
 import { ReminderService } from './reminder/reminder.service';
 import { Reminder } from './reminder/reminder';
 
