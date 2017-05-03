@@ -4,7 +4,7 @@
   <div fxLayout="row" fxLayoutGap="3%">
     <div fxFlex="67%" fxLayout="column">
       <p>Here is a small sample of things I can help with. Select from the list below or send me a chat.</p>
-      <a class="action" *ngFor="let action of actions; let i = index;" (click)="sendMessage(i)">{{action.message}}</a>
+      <a class="action" *ngFor="let action of actions; let i = index;" [ngClass]="{'disabled': action.disabled}" (click)="!action.disabled && sendMessage(i)">{{action.message}}</a>
     </div>
     <div fxFlex="33%" fxLayout="column" class="sidebar">
       <p>Want to know more about me?</p>

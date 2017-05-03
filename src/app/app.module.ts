@@ -6,9 +6,11 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MessageService } from './message.service';
 import { WeatherComponent } from './weather/weather.component';
 import { IntroComponent } from './intro/intro.component';
+
+import { MessageService } from './message.service';
+import { ReminderService } from './reminder/reminder.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { IntroComponent } from './intro/intro.component';
     HttpModule
   ],
   providers: [
-    MessageService
+    MessageService,
+    ReminderService
   ],
   bootstrap: [AppComponent]
 })

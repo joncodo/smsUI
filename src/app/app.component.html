@@ -1,7 +1,18 @@
 <bot-intro *ngIf="showIntro === true" (closeClick)="closeClick($event)"></bot-intro>
-<div class="content" fxLayout="column" fxFlex="1 0 auto">
-  <p class="message" [ngClass]="message.person" *ngFor="let message of messages">
-    {{message.value}}
-  </p>
+<div class="content" fxLayout="column" fxFlex>
+  <div class="messageContainer" fxLayout="row" [fxLayoutAlign]="message.person === 'bot' ? 'start center' : 'end center'" *ngFor="let message of messages; let i = index;">
+    <div class="logoContainer" fxLayout="row" fxLayoutAlign="center start" fxFlex="7rem" *ngIf="message.person === 'bot'">
+      <img class="logo" src="/assets/botson.png" *ngIf="message.person === 'bot' && message.position === 'first'" />
+    </div>
+    <p class="timestamp" fxFlex *ngIf="message.person === 'user'">
+      {{message.timestamp}}
+    </p>
+    <p class="message" [ngClass]="[message.person, message.position]" fxFlex="0 0 auto" [innerHTML]="message.value"></p>
+    <p class="timestamp" fxFlex *ngIf="message.person === 'bot'">
+      {{message.timestamp}}
+    </p>
+  </div>
 </div>
-<textarea placeholder="How can I help you?" fxFlex="1 0 auto"></textarea>
+<form (submit)="onSubmit()">
+  <textarea placeholder="How can I help you?" fxFlex [(ngModel)]="userMessage" name="userMessage" (keyup.enter)="onSubmit()"></textarea>
+</form>

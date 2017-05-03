@@ -22,25 +22,44 @@ export class IntroComponent implements OnInit {
   public message: string = null;
   public actions = [
     {
-      'message': 'What\'s the weather in New York, NY?'
+      'message': 'What\'s the weather in New York, NY?',
+      'value': 'What\'s the weather in New York, NY?',
+      'disabled': false
     },
     {
-      'message': 'Schedule a meeting with ___________'
+      'message': 'Remind me to call ___________ in ___________ minutes',
+      'value': 'Remind me to call Joe Baird in 10 minutes',
+      'disabled': false
     },
     {
-      'message': 'Let me know when ___________ is available'
+      'message': 'Show me a gif of ___________',
+      'value': 'Show me a gif of a kitten',
+      'disabled': false
     },
     {
-      'message': 'What are the most recent Google files I worked on?'
+      'message': 'Schedule a meeting with ___________',
+      'value': 'Schedule a meeting with Joe',
+      'disabled': true
     },
     {
-      'message': 'Show me emails from ___________'
+      'message': 'Let me know when ___________ is available',
+      'value': 'Let me know when Joe is available',
+      'disabled': true
     },
     {
-      'message': 'Will bots take over the world?'
+      'message': 'What are the most recent Google files I worked on?',
+      'value': 'What are the most recent Google files I worked on?',
+      'disabled': true
     },
     {
-      'message': 'Remind me to call ___________ in ___________ minutes'
+      'message': 'Show me emails from ___________',
+      'value': 'Show me emails from Joe',
+      'disabled': true
+    },
+    {
+      'message': 'Will bots take over the world?',
+      'value': 'Will bots take over the world?',
+      'disabled': true
     }
   ];
 
@@ -64,7 +83,7 @@ export class IntroComponent implements OnInit {
   public sendMessage(index): void {
     this.closeClick.emit({
       'doClose': true,
-      'message': this.actions[index].message
+      'message': this.actions[index].value
     });
   }
 
