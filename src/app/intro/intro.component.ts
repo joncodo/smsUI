@@ -28,7 +28,7 @@ export class IntroComponent implements OnInit {
     },
     {
       'message': 'Remind me to call ___________ in ___________ minutes',
-      'value': 'Remind me to call Joe Baird in 10 minutes',
+      'value': 'Remind me to call Joe Baird in 1 minute',
       'disabled': false
     },
     {
@@ -59,7 +59,7 @@ export class IntroComponent implements OnInit {
     {
       'message': 'Will bots take over the world?',
       'value': 'Will bots take over the world?',
-      'disabled': true
+      'disabled': false
     }
   ];
 
