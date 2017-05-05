@@ -13,7 +13,6 @@ import { Reminder } from './reminder/reminder';
   styleUrls: ['./app.component.styl']
 })
 export class AppComponent implements OnDestroy {
-  public title = 'Welcome to Botson!';
   public showIntro = true;
   public messages = [];
   public userMessage = '';
