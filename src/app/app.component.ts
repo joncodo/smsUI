@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { MessageService } from './message/message.service';
 
 @Component({
-  selector: 'bot-root',
+  selector: 'zipwhip-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.styl']
 })
@@ -40,18 +40,19 @@ export class AppComponent implements OnDestroy {
 
   public sendMessage(message): void {
     this._addMessage(message, 'user');
+    this._addMessage(message, 'bot');
 
-    this._messageService.sendMessage(message)
-      .then((res) => {
-        this._addMessage(res.message, 'bot');
-
-        switch (res.type) {
-          case 'direct_gif': this._addMessage(`<img src='${res.link}' />`, 'bot'); break;
-          case 'hyperlink': this._addMessage(`<a href='${res.link}'>${res.link}</a>`, 'bot'); break;
-        }
-      }, (err) => {
-        this._addMessage(err.errorMessage, 'bot');
-      });
+    // this._messageService.sendMessage(message)
+    //   .then((res) => {
+    //     this._addMessage(res.message, 'bot');
+    //
+    //     switch (res.type) {
+    //       case 'direct_gif': this._addMessage(`<img src='${res.link}' />`, 'bot'); break;
+    //       case 'hyperlink': this._addMessage(`<a href='${res.link}'>${res.link}</a>`, 'bot'); break;
+    //     }
+    //   }, (err) => {
+    //     this._addMessage(err.errorMessage, 'bot');
+    //   });
   }
 
   public onSubmit(): void {
