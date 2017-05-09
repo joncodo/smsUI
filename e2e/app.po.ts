@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class BotsonPage {
+export class ZipwhipPage {
   navigateTo() {
     return browser.get('/');
   }

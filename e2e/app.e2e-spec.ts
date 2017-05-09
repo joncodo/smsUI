@@ -1,10 +1,10 @@
-import { BotsonPage } from './app.po';
+import { ZipwhipPage } from './app.po';
 
-describe('botson App', () => {
-  let page: BotsonPage;
+describe('Zipwhip App', () => {
+  let page: ZipwhipPage;
 
   beforeEach(() => {
-    page = new BotsonPage();
+    page = new ZipwhipPage();
   });
 
   it('should display message saying app works', () => {
