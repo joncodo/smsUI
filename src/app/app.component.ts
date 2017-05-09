@@ -4,8 +4,6 @@ import * as moment from 'moment';
 import { Subscription } from 'rxjs/Subscription';
 
 import { MessageService } from './message/message.service';
-import { ReminderService } from './reminder/reminder.service';
-import { Reminder } from './reminder/reminder';
 
 @Component({
   selector: 'bot-root',
@@ -18,15 +16,8 @@ export class AppComponent implements OnDestroy {
   public userMessage = '';
   public subscription: Subscription;
 
-  constructor(
-    private _messageService: MessageService,
-    private _reminderService: ReminderService
-  ) {
-    this.subscription = this._reminderService
-      .getObservable()
-      .subscribe(reminder => {
-        this._addMessage(reminder, 'bot');
-      });
+  constructor(private _messageService: MessageService) {
+
   }
 
   ngOnDestroy() {
