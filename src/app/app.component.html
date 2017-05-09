@@ -13,5 +13,5 @@
   </div>
 </div>
 <form (submit)="onSubmit()">
-  <textarea placeholder="How can I help you?" fxFlex [(ngModel)]="userMessage" name="userMessage" (keyup.enter)="onSubmit()"></textarea>
+  <textarea placeholder="Type a message" fxFlex [(ngModel)]="userMessage" name="userMessage" (keyup.enter)="onSubmit()"></textarea>
 </form>
