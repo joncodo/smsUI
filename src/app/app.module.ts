@@ -5,15 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { IntroComponent } from './intro/intro.component';
 
 import { MessageService } from './message/message.service';
-import { ReminderService } from './reminder/reminder.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    IntroComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -22,8 +19,7 @@ import { ReminderService } from './reminder/reminder.service';
     HttpModule
   ],
   providers: [
-    MessageService,
-    ReminderService
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

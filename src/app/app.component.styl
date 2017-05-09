@@ -15,6 +15,19 @@ textarea
   border: 0 none
   border-top: 5px solid #ddd
   padding: .25rem .5rem
+  outline 0
+
+input[type="text"]
+  display block
+  width: 100%
+  font-size: .875rem
+  border: 0 none
+  border-top: 2px solid #ddd
+  padding: .25rem .5rem
+  outline 0
+  line-height 2.5em
+  &:focus
+    border-color $primary
 
 ::-webkit-input-placeholder
   color: #ccc
@@ -46,7 +59,6 @@ textarea
 
 .messageContainer
   position: relative
-  padding-right: 1.75rem
 
 .message
   padding: 1rem
@@ -69,27 +81,27 @@ textarea
     color: white
     text-align: right
     align-self: flex-end
-    border-bottom-right-radius: 0
-
-    &.middle
-      border-top-right-radius: 0
-
-    &.last
-      border-top-right-radius: 0
-      border-bottom-right-radius: $message-border-radius
 
   &.bot
-    background-color: white
-    border-bottom-left-radius: 0
-
-    &.middle
-      border-top-left-radius: 0
-
-    &.last
-      border-top-left-radius: 0
-      border-bottom-left-radius: $message-border-radius
+    background-color: $message-secondary
 
     + .timestamp
       text-align: right
       padding-left: 0
       margin-left: 0
+.message:before
+  border-color $primary
+  border-radius 50% 50% 50% 50%
+  border-style solid
+  border-width 0 20px
+  bottom -2px
+  clip rect(20px, 35px, 42px, 0px)
+  content " "
+  height 40px
+  position absolute
+  right -48px
+  width 30px
+.message.bot:before
+  border-color $message-secondary
+  left -48px
+  transform rotateY(180deg)
