@@ -1,11 +1,10 @@
 <div class="content" #content [scrollTop]="content.scrollHeight">
   <div class="messageContainer" fxLayout="row" [fxLayoutAlign]="message.person === 'bot' ? 'start center' : 'end center'" *ngFor="let message of messages; let i = index;">
-    <p class="timestamp" fxFlex *ngIf="message.person === 'user'">
-      {{message.timestamp}}
-    </p>
-    <p class="message" [ngClass]="[message.person, message.position]" fxFlex="0 0 auto" [innerHTML]="message.value"></p>
-    <p class="timestamp" fxFlex *ngIf="message.person === 'bot'">
-      {{message.timestamp}}
+    <p class="message" [ngClass]="[message.person, message.position]" fxFlex="0 0 auto">
+      {{message.value}}
+      <span class="timestamp">
+        {{message.timestamp}}
+      </span>
     </p>
   </div>
 </div>

@@ -54,11 +54,17 @@ input[type="text"]
   margin-top: 1rem
 
 .timestamp
-  margin: 1rem 0 0 1.75rem
   color: #aaa
+  position absolute
+  left 20px
+  bottom -20px
+  font-size .8em
 
 .messageContainer
   position: relative
+  &:first-child
+    .message
+      margin-top 0
 
 .message
   padding: 1rem
@@ -66,29 +72,23 @@ input[type="text"]
   max-width: 75%
   border-radius: $message-border-radius
   background-color: $message-primary
-
+  position relative
   &.first
-    margin-top: 1.5rem
-
+    margin-top: 2.5rem
   &.middle
   &.last
     margin-top: .5rem
-
     + .timestamp
       margin-top: .5rem
-
   &.user
     color: white
     text-align: right
     align-self: flex-end
-
   &.bot
     background-color: $message-secondary
-
-    + .timestamp
-      text-align: right
-      padding-left: 0
-      margin-left: 0
+    .timestamp
+      left initial
+      right 20px
 .message:before
   border-color $primary
   border-radius 50% 50% 50% 50%
