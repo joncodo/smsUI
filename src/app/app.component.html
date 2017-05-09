@@ -1,8 +1,5 @@
 <div class="content" #content [scrollTop]="content.scrollHeight">
   <div class="messageContainer" fxLayout="row" [fxLayoutAlign]="message.person === 'bot' ? 'start center' : 'end center'" *ngFor="let message of messages; let i = index;">
-    <div class="logoContainer" fxLayout="row" fxLayoutAlign="center start" fxFlex="7rem" *ngIf="message.person === 'bot'">
-      <img class="logo" src="/assets/botson.png" *ngIf="message.person === 'bot' && message.position === 'first'" />
-    </div>
     <p class="timestamp" fxFlex *ngIf="message.person === 'user'">
       {{message.timestamp}}
     </p>
