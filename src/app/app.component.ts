@@ -63,16 +63,6 @@ export class AppComponent implements OnDestroy {
       });
   }
 
-  public closeClick(event): void {
-    if (event.doClose === true) {
-      this.showIntro = false;
-    }
-
-    if (event.message !== null) {
-      this.sendMessage(event.message);
-    }
-  }
-
   public onSubmit(): void {
     this.sendMessage(this.userMessage);
     this.userMessage = '';
