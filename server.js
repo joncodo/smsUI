@@ -1,11 +1,12 @@
 var express = require('express');
 var bodyParser = require('body-parser')
 var app = express();
-var http = require('http').Server(app);
 var fs = require("fs");
-// var io = require('socket.io')(http, {origins:'*'});
-var io = require('socket.io')(http);
 var cors = require('cors');
+app.use(bodyParser.json())
+app.use(express.static(__dirname + '/dist'));
+var router = app.listen(process.env.PORT || 80);
+var io = require('socket.io')(router);
 
 io.on('connection', (socket) => {
   console.log('user connected');
@@ -25,12 +26,10 @@ app.options('/*', function(req, res) {
 res.send(200, 'CHECKOUT,CONNECT,COPY,DELETE,GET,HEAD,LOCK,M-SEARCH,MERGE,MKACTIVITY,MKCALENDAR,MKCOL,MOVE,NOTIFY,PATCH,POST,PROPFIND,PROPPATCH,PURGE,PUT,REPORT,SEARCH,SUBSCRIBE,TRACE,UNLOCK,UNSUBSCRIBE');
 });
 
-app.use(bodyParser.json())
-app.use(express.static(__dirname + '/dist'));
-app.listen(process.env.PORT || 80);
+
 app.post('/receive', function (req, res) {
   io.emit('message', {type:'new-message', text: req.body});
-  console.log(JSON.stringify(req.body));
+  res.json(req.body);
 })
 
 app.get(/^\/(.*)(?:\/|$)/, function (req, res) {

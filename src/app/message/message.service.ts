@@ -37,7 +37,7 @@ export class MessageService {
 
   getMessages() {
     let observable = new Observable(observer => {
-      this.socket = io.connect(this.url);
+      this.socket = io.connect();
       this.socket.on('message', (data) => {
         observer.next(data);
       });
