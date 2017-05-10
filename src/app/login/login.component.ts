@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     }, options)
     .toPromise()
     .then((response: any) => {
-      console.log(response.json());
+      window.location.href = response.json().url;
     })
     .catch(this._handleError);
   }
