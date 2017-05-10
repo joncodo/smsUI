@@ -48,18 +48,6 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   public sendMessage(message): void {
     this._addMessage(message, 'user');
-
-    this._messageService.sendMessage(message)
-      .then((res) => {
-        // this._addMessage(res.message, 'bot');
-
-        // switch (res.type) {
-        //   case 'direct_gif': this._addMessage(`<img src='${res.link}' />`, 'bot'); break;
-        //   case 'hyperlink': this._addMessage(`<a href='${res.link}'>${res.link}</a>`, 'bot'); break;
-        // }
-      }, (err) => {
-        // this._addMessage(err.errorMessage, 'bot');
-      });
   }
 
   public onSubmit(): void {
