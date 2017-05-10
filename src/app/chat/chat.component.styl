@@ -1,0 +1,105 @@
+@import '../../styles/variables'
+
+\:host
+  display: flex
+  flex: 1
+  flex-direction: column
+  height: 100%
+
+textarea
+  display: block
+  width: 100%
+  height: 3rem
+  font-size: .875rem
+  resize: none
+  border: 0 none
+  border-top: 5px solid #ddd
+  padding: .25rem .5rem
+  outline 0
+
+input[type="text"]
+  display block
+  width: 100%
+  font-size: .875rem
+  border: 0 none
+  border-top: 2px solid #ddd
+  padding: .25rem .5rem
+  outline 0
+  line-height 2.5em
+  &:focus
+    border-color $primary
+
+::-webkit-input-placeholder
+  color: #ccc
+
+::-moz-placeholder
+  color: #ccc
+
+:-ms-input-placeholder
+  color: #ccc
+
+:-moz-placeholder
+  color: #ccc
+
+.content
+  padding: 1rem
+  background-color: #fafafa
+  overflow: scroll
+  height: 100%
+
+.timestamp
+  color: #aaa
+  position absolute
+  left 14px
+  bottom -20px
+  font-size .8em
+  white-space nowrap
+
+.messageContainer
+  position: relative
+  &:first-child
+    .message
+      margin-top 0
+  &:last-child
+    .message
+      margin-bottom 1.5rem
+
+.message
+  padding: .8rem
+  margin: 0
+  max-width: 75%
+  border-radius: $message-border-radius
+  background-color: $message-primary
+  position relative
+  font-size 14px
+  &.first
+    margin-top: 2.5rem
+  &.middle
+  &.last
+    margin-top: .5rem
+    + .timestamp
+      margin-top: .5rem
+  &.user
+    color: white
+    align-self: flex-end
+  &.bot
+    background-color: $message-secondary
+    .timestamp
+      left initial
+      right 14px
+.message:before
+  border-color $primary
+  border-radius 50% 50% 50% 50%
+  border-style solid
+  border-width 0 20px
+  bottom -6px
+  clip rect(20px, 35px, 42px, 0px)
+  content " "
+  height 40px
+  position absolute
+  right -48px
+  width 30px
+.message.bot:before
+  border-color $message-secondary
+  left -48px
+  transform rotateY(180deg)

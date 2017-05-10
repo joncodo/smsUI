@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+import * as io from 'socket.io-client';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -10,6 +13,8 @@ import { environment } from '../../environments/environment';
 export class MessageService {
   // private _apiUrl =  `${environment.host}:${environment.port}/api/v1/messages`;
   private _apiUrl =  ` https://young-basin-29738.herokuapp.com/sendMessage/+3124834811`;
+  private url = 'http://localhost:4201';
+  private socket;
 
   constructor(
     private _http: Http,
@@ -29,6 +34,19 @@ export class MessageService {
   }
 
   //////////
+
+  getMessages() {
+    let observable = new Observable(observer => {
+      this.socket = io.connect(this.url);
+      this.socket.on('message', (data) => {
+        observer.next(data);
+      });
+      return () => {
+        this.socket.disconnect();
+      };
+    })
+    return observable;
+  }
 
   private _handleError(err: Response) {
     err = err.json();

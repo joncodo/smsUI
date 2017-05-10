@@ -1,0 +1,13 @@
+<div class="content" #content [scrollTop]="content.scrollHeight">
+  <div class="messageContainer" fxLayout="row" [fxLayoutAlign]="message.person === 'bot' ? 'start center' : 'end center'" *ngFor="let message of messages; let i = index;">
+    <p class="message" [ngClass]="[message.person, message.position]" fxFlex="0 0 auto">
+      {{message.value}}
+      <span class="timestamp">
+        {{message.timestamp}}
+      </span>
+    </p>
+  </div>
+</div>
+<form>
+  <input type="text" placeholder="Type a message" fxFlex [(ngModel)]="userMessage" name="userMessage" (keyup.enter)="onSubmit()" autocomplete="off">
+</form>
