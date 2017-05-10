@@ -3,14 +3,10 @@
   "version": "0.0.1",
   "license": "ISC",
   "scripts": {
-    "dev": "concurrently --kill-others -p [{name}] -n \"API,NG2\" -c \"bgGreen.bold,bgRed.bold\" \"./node_modules/.bin/nodemon -e js index.js\" \"ng serve --progress=false\"",
-    "stage": "concurrently --kill-others -p [{name}] -n \"NG2,API\" -c \"bgRed.bold,bgGreen.bold\" \"ng build --prod --watch=true\" \"NODE_ENV=production ./node_modules/.bin/nodemon -e js index.js\"",
-    "prod": "NODE_ENV=production node index.js",
-    "build": "ng build --prod --sm=false --aot=true",
-    "start": "npm run dev",
     "test": "ng test",
     "lint": "tslint \"src/**/*.ts\"",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build"
   },
   "repository": {
     "type": "git",
@@ -33,9 +29,7 @@
     "express": "^4.15.2",
     "moment": "^2.18.1",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
-  },
-  "devDependencies": {
+    "zone.js": "^0.8.4",
     "@angular/cli": "1.0.0",
     "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",
@@ -55,5 +49,6 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "~2.2.0"
-  }
+  },
+  "devDependencies": { }
 }
