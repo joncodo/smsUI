@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Http, Response } from '@angular/http';
+import { Headers, RequestOptions } from '@angular/http';
 
 @Component({
   selector: 'bot-login',
@@ -7,20 +9,49 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.styl']
 })
 export class LoginComponent implements OnInit {
-  token: number;
+  private token: number;
   private routeSubscription: any;
+  public username = '';
+  public password = '';
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private _http: Http) { }
 
   ngOnInit() {
     this.routeSubscription = this.route.queryParams.subscribe(params => {
        this.token = params['token'];
-       alert(this.token);
+       console.log("hub token", this.token);
     });
   }
 
   ngOnDestroy() {
     this.routeSubscription.unsubscribe();
+  }
+
+  login(username: string, password: string) {
+    var _apiUrl =  `https://young-basin-29738.herokuapp.com/login`;
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    this._http.post(_apiUrl, {
+      username: username,
+      hubLoginToken: this.token,
+      password: password
+    }, options)
+    .toPromise()
+    .then((response: any) => {
+      console.log(response.json());
+    })
+    .catch(this._handleError);
+  }
+
+  public onSubmit(): void {
+    this.login(this.username, this.password);
+    this.username = '';
+    this.password = '';
+  }
+
+  private _handleError(err: Response) {
+    err = err.json();
+    console.error('An Error Occurred:', err);
   }
 
 }

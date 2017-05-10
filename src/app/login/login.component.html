@@ -1,17 +1,10 @@
 <div class="login-page">
   <p>Zipwhip Login</p>
   <div class="form">
-    <form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button>login</button>
-    </form>
+    <div class="login-form">
+      <input type="text" placeholder="username" [(ngModel)]="username" autocomplete="off"/>
+      <input type="password" placeholder="password" [(ngModel)]="password" (keyup.enter)="onSubmit()" autocomplete="off"/>
+      <button (click)="onSubmit()">login</button>
+    </div>
   </div>
 </div>
