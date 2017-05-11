@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  host: "https://young-basin-29738.herokuapp.com"
+  host: "https://young-basin-29738.herokuapp.com",
+  webHook: "https://zipwhip-frontend.herokuapp.com/receive"
 };

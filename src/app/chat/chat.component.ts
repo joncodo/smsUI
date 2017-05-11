@@ -36,6 +36,13 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.socketConnection = this._messageService.getMessages().subscribe(message => {
       console.log("message received from socket", message);
     })
+    this.from = this.cookieService.get('username');
+    this._messageService.createHook(this.from)
+      .then((res) => {
+        console.log(res);
+      }, (err) => {
+        console.error(err);
+      });
   }
 
   ngOnDestroy() {

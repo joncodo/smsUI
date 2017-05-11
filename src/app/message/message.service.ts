@@ -12,7 +12,6 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class MessageService {
-  private _apiUrl =  `${environment.host}/sendMessage`;
   private socket;
 
   constructor(
@@ -24,7 +23,20 @@ export class MessageService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     return this._http
-      .post(this._apiUrl, {message, from, to}, options)
+      .post(`${environment.host}/sendMessage`, {message, from, to}, options)
+      .toPromise()
+      .then((response: any) => {
+        response = response.json();
+        return response;
+      })
+      .catch(this._handleError);
+  }
+
+  createHook(username: string): Promise<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this._http
+      .post(`${environment.host}/createWebhook`, {url: environment.webHook, username: username}, options)
       .toPromise()
       .then((response: any) => {
         response = response.json();
