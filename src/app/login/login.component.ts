@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
+import { LoginService } from '../loginService/login-service.service';
 
 @Component({
   selector: 'bot-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   public username = '';
   public password = '';
 
-  constructor(private route: ActivatedRoute, private _http: Http) { }
+  constructor(private route: ActivatedRoute, private _http: Http, private loginService: LoginService) { }
 
   ngOnInit() {
     this.routeSubscription = this.route.queryParams.subscribe(params => {
@@ -31,6 +32,8 @@ export class LoginComponent implements OnInit {
     var _apiUrl =  `https://young-basin-29738.herokuapp.com/login`;
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
+    this.loginService.username = username;
+    this.loginService.token = this.token;
     this._http.post(_apiUrl, {
       username: username,
       hubLoginToken: this.token,

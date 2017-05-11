@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { MessageService } from './message/message.service';
+import { LoginService } from './loginService/login-service.service';
 import { LoginComponent } from './login/login.component';
 import { ChatComponent } from './chat/chat.component';
 
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    MessageService
+    MessageService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
