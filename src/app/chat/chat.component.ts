@@ -33,7 +33,7 @@ export class ChatComponent implements OnInit, OnDestroy {
        console.log("outbound number is ", this.to);
     });
 
-    this.socketConnection = this._messageService.getMessages().subscribe(message => {
+    this.socketConnection = this._messageService.getMessages().subscribe((message: any) => {
       console.log("message received from socket", message);
       this._addMessage(message.text.body, 'User: ' + message.text.finalSource);
     })
