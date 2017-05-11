@@ -11,9 +11,7 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class MessageService {
-  // private _apiUrl =  `${environment.host}:${environment.port}/api/v1/messages`;
-  private _apiUrl =  ` https://young-basin-29738.herokuapp.com/sendMessage/+3124834811`;
-  private url = 'http://localhost:4201';
+  private _apiUrl =  `${environment.host}/sendMessage/+3124834811`;
   private socket;
 
   constructor(

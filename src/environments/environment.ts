@@ -5,6 +5,5 @@
 
 export const environment = {
   production: false,
-  host: "http://localhost",
-  port: 8075
+  host: "https://young-basin-29738.herokuapp.com"
 };

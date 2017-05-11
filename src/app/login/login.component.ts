@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { LoginService } from '../loginService/login-service.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'bot-login',
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(username: string, password: string) {
-    var _apiUrl =  `https://young-basin-29738.herokuapp.com/login`;
+    var _apiUrl =  `${environment.host}/login`;
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     this.loginService.username = username;
