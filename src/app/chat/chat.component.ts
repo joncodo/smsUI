@@ -35,7 +35,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     this.socketConnection = this._messageService.getMessages().subscribe((message: any) => {
       console.log("message received from socket", message);
-      this._addMessage(message.text.body, 'User: ' + message.text.finalSource);
+      this._addMessage(message.text.body, 'bot');
     })
     this.from = this.cookieService.get('username');
     this._messageService.createHook(this.from)
