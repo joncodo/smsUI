@@ -68,7 +68,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   public sendMessage(message): void {
     this._addMessage(message, 'user');
     this.from = this.cookieService.get('username');
-    this._messageService.sendMessage(message, this.from, this.to)
+    // this._messageService.sendMessage(message, this.from, this.to)
+    this._messageService.sendMessage(message, this.from, '+3124834811')
       .then((res) => {
         console.log(res);
       }, (err) => {
