@@ -1,8 +1,8 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import { Subscription } from 'rxjs/Subscription';
-
+import { CookieService } from 'ng2-cookies';
 import { MessageService } from '../message/message.service';
 
 @Component({
@@ -17,12 +17,22 @@ export class ChatComponent implements OnInit, OnDestroy {
   public userMessage = '';
   public subscription: Subscription;
   private socketConnection;
+  private routeSubscription: any;
+  private to: string;
+  private from: string;
 
-  constructor(private _messageService: MessageService) {
-
-  }
+  constructor(
+    private _messageService: MessageService,
+    private route: ActivatedRoute,
+    public cookieService: CookieService
+  ) {}
 
   ngOnInit() {
+    this.routeSubscription = this.route.queryParams.subscribe(params => {
+       this.to = params['to'];
+       console.log("outbound number is ", this.to);
+    });
+
     this.socketConnection = this._messageService.getMessages().subscribe(message => {
       console.log("message received from socket", message);
     })
@@ -30,6 +40,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.routeSubscription.unsubscribe();
   }
 
   ////////////
@@ -48,6 +59,13 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   public sendMessage(message): void {
     this._addMessage(message, 'user');
+    this.from = this.cookieService.get('username');
+    this._messageService.sendMessage(message, this.from, this.to)
+      .then((res) => {
+        console.log(res);
+      }, (err) => {
+        console.error(err);
+      });
   }
 
   public onSubmit(): void {

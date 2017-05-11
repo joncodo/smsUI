@@ -11,6 +11,7 @@ import { MessageService } from './message/message.service';
 import { LoginService } from './loginService/login-service.service';
 import { LoginComponent } from './login/login.component';
 import { ChatComponent } from './chat/chat.component';
+import { CookieService } from 'ng2-cookies';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     MessageService,
-    LoginService
+    LoginService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

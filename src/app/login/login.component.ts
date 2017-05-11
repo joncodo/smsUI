@@ -4,6 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { LoginService } from '../loginService/login-service.service';
 import { environment } from '../../environments/environment';
+import { CookieService } from 'ng2-cookies';
 
 @Component({
   selector: 'bot-login',
@@ -11,12 +12,17 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./login.component.styl']
 })
 export class LoginComponent implements OnInit {
-  private token: number;
+  private token: string;
   private routeSubscription: any;
   public username = '';
   public password = '';
 
-  constructor(private route: ActivatedRoute, private _http: Http, private loginService: LoginService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private _http: Http,
+    private loginService: LoginService,
+    public cookieService: CookieService
+  ) {}
 
   ngOnInit() {
     this.routeSubscription = this.route.queryParams.subscribe(params => {
@@ -35,6 +41,8 @@ export class LoginComponent implements OnInit {
     let options = new RequestOptions({ headers: headers });
     this.loginService.username = username;
     this.loginService.token = this.token;
+    this.cookieService.set('username', username);
+    this.cookieService.set('token', this.token);
     this._http.post(_apiUrl, {
       username: username,
       hubLoginToken: this.token,
